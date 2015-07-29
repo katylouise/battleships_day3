@@ -2,13 +2,19 @@ require 'cell'
 
 describe Cell do
   let(:ship){ double(:ship) }
+  let(:player){ double(:player) }
 
-  it 'is different than other cells' do
+  it "is unique" do
     expect(subject.content).not_to eq(Cell.new.content)
   end
 
-  it 'shouldn\'t allow to have more than one content per cell' do
+  it "should not contain more than one ship" do
     subject.content = ship
-    expect{ subject.change_contents(ship) }.to raise_error("Occupied")
+    expect{ subject.change_contents(ship) }.to raise_error "Occupied"
+  end
+
+  it "should be hit when fired at" do
+    subject.hit
+    expect(subject).to be_hit
   end
 end
