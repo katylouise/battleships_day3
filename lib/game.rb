@@ -1,4 +1,4 @@
-require 'board'
+require_relative 'board'
 
 class Game
   attr_reader :players
@@ -7,10 +7,6 @@ class Game
   def initialize
     @players = []
     @board = board
-  end
-
-  def self.start
-    @board = Board.new
   end
 
   def add_player(player)

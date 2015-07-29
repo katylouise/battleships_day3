@@ -8,9 +8,24 @@ SHIP_TYPES = {test: 1, destroyer: 2,cruiser: 3, submarine: 3, battleship: 4, air
  end
 
 attr_reader :symbol, :size
+attr_accessor :hit_count
 
   def initialize(size)
     @symbol = :s
     @size = size
+    @hit_count = 0
+    @status = :afloat
   end
+
+  def hit
+    @symbol = :x
+    hit_count += 1
+    sunk if hit_count == size
+    "Hit!"
+  end
+
+  def sunk
+    @status = :sunk
+  end
+
 end

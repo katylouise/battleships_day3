@@ -5,4 +5,9 @@ class Water
   def initialize
     @symbol = :~
   end
+
+  def hit
+    @symbol = :map
+    "Miss"
+  end
 end

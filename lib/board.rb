@@ -8,7 +8,7 @@ class Board
   end
 
   def display_grid
-    grid.matrix.map { |row| row.map { |e| e.content.symbol  } }
+    grid.matrix.map { |row| row.map { |el| el.content.symbol  } }
   end
 
   def place (ship, coordinate, direction=:north)
@@ -41,7 +41,6 @@ class Board
 
     @x = alpha_table[x.upcase]
     @y = (y.to_i - 1)
-
-    [@x,@y]
+    [@x, @y]
   end
 end

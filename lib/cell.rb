@@ -17,6 +17,7 @@ class Cell
 
   def hit
     @status = :hit
+    content.hit
   end
 
   def hit?
