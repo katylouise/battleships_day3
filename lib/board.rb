@@ -5,17 +5,13 @@ class Board
 
   def initialize
     @grid = Grid.new
-    # @display = display_grid
   end
 
   def display_grid
     grid.matrix.map { |row| row.map { |e| e.content.symbol  } }
-    #check if we get a need grid each time we display board
-    #change Grid.new
   end
 
   def place (ship, coordinate, direction=:north)
-   # check_coordinates
     number_coords = coordinate_converter(coordinate)
     ship.size.times do
       cell = grid.find_cell(number_coords)
@@ -37,18 +33,9 @@ class Board
     end
   end
 
-  # def check_coordinates(coordinates, ship, direction)
-  #   case direction
-  #   when :north
-
-  #   when :south
-
-  # end
-
   def coordinate_converter(coordinate)
     alpha_table = {}
     (('A'..'Z').zip(0..25)).each { |x| alpha_table[x[0]] = x[1] }
-    #coord_arr = coordinate.to_s.split('')
     x = coordinate.to_s.slice!(0)
     y = coordinate
 

@@ -10,6 +10,7 @@ class Cell
   end
 
   def change_contents(ship)
+    fail "Occupied" if content.is_a?(Ship)
     @content = ship
   end
 
