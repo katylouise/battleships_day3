@@ -1,9 +1,19 @@
+require_relative 'water'
+
 class Cell
 
-attr_reader :content
+  DEFAULT_CONTENT = Water.new
 
-def add_content(content)
-  @content = content
-end
+  attr_reader :content
 
+  def initialize(options={})
+    options = defaults.merge(options)
+    @content = options[:content]
+  end
+
+  private
+
+  def defaults
+    {content: DEFAULT_CONTENT}
+  end
 end

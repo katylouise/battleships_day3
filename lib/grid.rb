@@ -7,11 +7,12 @@ attr_reader :matrix
   def initialize(options = {})
     options = defaults.merge(options)
     @size = options[:size]
-    @matrix = matrix_builder
+    matrix_builder
   end
 
   def matrix_builder
-    Array.new(@size){Array.new(@size)}
+    @matrix = Array.new(@size) { Array.new(@size) }
+    @matrix.map! { |row| row.map { |cell| Cell.new}  }
   end
 
 private
