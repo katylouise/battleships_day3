@@ -2,7 +2,7 @@ require_relative 'water'
 
 class Cell
 
-  attr_reader :content
+  attr_accessor :content
 
   def initialize(options={})
     options = defaults.merge(options)
