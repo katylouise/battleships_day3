@@ -9,6 +9,10 @@ class Cell
     @content = options[:content]
   end
 
+  def change_contents(ship)
+    @content = ship
+  end
+
   private
 
   def defaults

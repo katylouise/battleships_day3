@@ -7,8 +7,8 @@ describe Cell do
     expect(subject.content).not_to eq(Cell.new.content)
   end
 
-  xit 'is able to change content' do
-    subject.add_ship
-
-  end
+  # it 'is able to change content' do
+  #   subject.add_ship(ship)
+  #   subject.content
+  # end
 end
