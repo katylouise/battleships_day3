@@ -1,8 +1,8 @@
 class Water
 
-  attr_reader :water_symbol
+  attr_reader :symbol
 
   def initialize
-    @water_symbol = :~
+    @symbol = :~
   end
 end

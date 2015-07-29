@@ -2,8 +2,6 @@ require_relative 'water'
 
 class Cell
 
-  DEFAULT_CONTENT = Water.new
-
   attr_reader :content
 
   def initialize(options={})
@@ -14,6 +12,6 @@ class Cell
   private
 
   def defaults
-    {content: DEFAULT_CONTENT}
+    {content: Water.new}
   end
 end

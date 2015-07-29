@@ -7,10 +7,10 @@ SHIP_TYPES = {destroyer: 2,cruiser: 3, submarine: 3, battleship: 4, aircraft_car
    super
  end
 
-attr_reader :ship_symbol, :size
+attr_reader :symbol, :size
 
   def initialize(size)
-    @ship_symbol = :s
+    @symbol = :s
     @size = size
   end
 end
