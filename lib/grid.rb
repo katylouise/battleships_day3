@@ -4,7 +4,7 @@ class Grid
 
 DEFAULT_SIZE = 10
 
-attr_reader :matrix
+attr_reader :matrix, :size
 
   def initialize(options = {})
     options = defaults.merge(options)
