@@ -11,22 +11,27 @@ class Board
     grid.matrix.map { |row| row.map { |el| el.content.symbol  } }
   end
 
-  def place (ship, coordinate, direction=:horizontal)
-    number_coords = get_number_coordinates(coordinate)
-    ship.size.times do
-      cell = grid.find_cell(number_coords)
-      cell.change_contents(ship)
-      lambda do |direction|
-        direction == :horizontal ? coordinate = 0 : coordinate = 1
-        fail "Your ship is off the grid" if number_coords[coordinate] + ship.size > grid.size
-        number_coords[coordinate] += 1
-      end.call(direction)
-    end
+  def check_coord (ship, number_coordinate, direction)
+    direction == :horizontal ? grid_reference = 0 : grid_reference = 1
+    fail "Your ship is off the grid" if number_coordinate[grid_reference] + ship.size > grid.size
   end
 
-  def get_number_coordinates(coordinate)
-    coordinate_converter(coordinate)
+  def place (ship, coordinate, direction=:horizontal)
+    number_coords = coordinate_converter(coordinate)
+    check_coord(ship, number_coords, direction)
+    grid_reference = grid_reference
+    add_ship_to_cells(ship, number_coords)
   end
+
+  def add_ship_to_cells (ship, number_coordinate)
+    ship.size.times do
+      grid.find_cell(number_coordinate).change_contents(ship)
+      number_coordinate[grid_reference] += 1
+    end
+  end
+  # def get_number_coordinates(coordinate)
+  #   coordinate_converter(coordinate)
+  # end
 
 
   def alphabet_hash
