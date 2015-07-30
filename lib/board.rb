@@ -33,14 +33,16 @@ class Board
     end
   end
 
-  def coordinate_converter(coordinate)
+  def alphabet_hash
     alpha_table = {}
     (('A'..'Z').zip(0..25)).each { |x| alpha_table[x[0]] = x[1] }
-    x = coordinate.to_s.slice!(0)
-    y = coordinate
+    alpha_table
+  end
 
-    @x = alpha_table[x.upcase]
-    @y = (y.to_i - 1)
-    [@x, @y]
+  def coordinate_converter(coordinate)
+    alpha_table = alphabet_hash
+    x = coordinate.slice!(0).upcase
+    y = coordinate.to_i
+    [alpha_table[x], (y - 1)]
   end
 end
