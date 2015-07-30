@@ -4,8 +4,9 @@ class Board
   attr_accessor :grid
   attr_reader :size
 
-  def initialize size
-    # options = defaults.merge(options)
+  DEFAULT_SIZE = 10
+
+  def initialize size=DEFAULT_SIZE
     @size = size
     @grid = Grid.new @size
   end
@@ -50,7 +51,5 @@ class Board
 
   private
 
-  def defaults
-    {size: DEFAULT_SIZE }
-  end
+
 end

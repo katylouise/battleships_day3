@@ -1,7 +1,7 @@
 require 'cell'
 
 describe Cell do
-  let(:ship){ double(:ship) }
+  let(:ship){ double(:ship, { status: :ready_to_place }) }
   let(:player){ double(:player) }
 
   it "is unique" do
@@ -10,8 +10,8 @@ describe Cell do
 
   describe "#change_contents" do
     it 'should put a ship in the cell' do
+      expect(ship).to receive(:status=).with(:afloat)
       subject.change_contents(ship)
-      expect(subject.content).to eq(ship)
     end
 
     it "should not contain more than one ship" do

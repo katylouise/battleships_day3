@@ -7,6 +7,10 @@ describe Board do
     expect(board).to respond_to(:display_grid)
   end
 
+  it 'has a default size' do
+    expect(board.size).to eq(Board::DEFAULT_SIZE)
+  end
+
   it 'converts coordinates' do
     expect(board.coordinate_converter('D10')).to eq([3, 9])
   end
@@ -14,6 +18,11 @@ describe Board do
   describe "#place" do
     it 'responds to place' do
       expect(board).to respond_to(:place).with(3).argument
+    end
+
+    it 'changes status of ship to afloat' do
+      ship.size.times{ expect(ship).to receive(:status=).with(:afloat) }
+      board.place(ship, 'A1', :horizontal)
     end
   end
 

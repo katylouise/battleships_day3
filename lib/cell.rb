@@ -13,6 +13,7 @@ class Cell
 
   def change_contents(ship)
     fail "Occupied" if content === ship
+     ship.status = :afloat
     @content = ship
   end
 

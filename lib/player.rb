@@ -1,21 +1,24 @@
 require_relative 'grid'
-#require_relative 'ship'
 require_relative 'board'
 
 class Player
   attr_accessor :board, :ships
 
-  DEFAULT_BOARD_SIZE = 10
-
-  def initialize(board_size=DEFAULT_BOARD_SIZE)
-    # @name = name
+  def initialize
     @points = 0
-    @board = Board.new board_size
     @ships = []
   end
 
+  def add_board board
+    @board = board
+  end
+
+  def has_board?
+    @board ? true : false
+  end
+
   def place(ship, location, direction=:north)
-    ships << ship
+    ships << ship unless full?
     board.place(ship, location, direction)
   end
 
@@ -27,4 +30,11 @@ class Player
   def display_grid
     board.display_grid
   end
+
+  private
+
+  def full?
+    ships.count >= DEFAULT_AMOUNT_OF_SHIPS
+  end
+
 end
