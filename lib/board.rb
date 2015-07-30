@@ -14,16 +14,16 @@ class Board
   def check_coord (ship, number_coordinate, direction)
     direction == :horizontal ? grid_reference = 0 : grid_reference = 1
     fail "Your ship is off the grid" if number_coordinate[grid_reference] + ship.size > grid.size
+    grid_reference
   end
 
   def place (ship, coordinate, direction=:horizontal)
     number_coords = coordinate_converter(coordinate)
-    check_coord(ship, number_coords, direction)
-    grid_reference = grid_reference
-    add_ship_to_cells(ship, number_coords)
+    grid_reference = check_coord(ship, number_coords, direction)
+    add_ship_to_cells(ship, number_coords, grid_reference)
   end
 
-  def add_ship_to_cells (ship, number_coordinate)
+  def add_ship_to_cells (ship, number_coordinate, grid_reference)
     ship.size.times do
       grid.find_cell(number_coordinate).change_contents(ship)
       number_coordinate[grid_reference] += 1
