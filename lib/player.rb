@@ -33,6 +33,10 @@ class Player
     board.display_grid
   end
 
+  def lost?
+    ships.count > 0 && ships.all?{ |ship| ship.status == :sunk } ? true : false
+  end
+
   private
 
   def full?
