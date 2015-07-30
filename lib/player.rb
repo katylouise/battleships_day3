@@ -17,8 +17,9 @@ class Player
     @board ? true : false
   end
 
-  def place(ship, location, direction=:north)
-    ships << ship unless full?
+  def place(ship, location, direction)
+    fail 'too many ships' if full?
+    ships << ship
     board.place(ship, location, direction)
   end
 
@@ -34,7 +35,7 @@ class Player
   private
 
   def full?
-    ships.count >= DEFAULT_AMOUNT_OF_SHIPS
+    ships.count >= 5
   end
 
 end
