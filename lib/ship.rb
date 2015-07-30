@@ -19,12 +19,16 @@ attr_accessor :hit_count, :status
 
   def hit
     @hit_count += 1
-    sunk if hit_count == size
-    "Hit!"
+    if hit_count >= size
+      sunk
+    else
+      "Hit!"
+    end
   end
 
   def sunk
     @status = :sunk
+    "You have sunk my ship!"
   end
 
 end

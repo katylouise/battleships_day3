@@ -24,4 +24,9 @@ describe Cell do
     subject.hit
     expect(subject).to be_hit
   end
+
+  it "should raise an error if you have already hit this cell" do
+    subject.hit
+    expect{ subject.hit }.to raise_error "You have already hit this spot"
+  end
 end

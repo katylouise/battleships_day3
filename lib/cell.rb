@@ -18,6 +18,7 @@ class Cell
   end
 
   def hit
+    fail "You have already hit this spot" if hit?
     @status = :hit
     @display_symbol = 'x'
     content.hit

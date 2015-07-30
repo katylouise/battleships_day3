@@ -1,8 +1,8 @@
 require 'ship'
 
 describe Ship do
+    ship = Ship.destroyer
     it 'contains ship symbol' do
-      ship = Ship.destroyer
       expect(ship.symbol).to eq('s')
     end
 
@@ -33,5 +33,15 @@ describe Ship do
 
     it "raises error if valid ship not given" do
       expect{ described_class.not_valid }.to raise_error(NameError)
+    end
+
+    it "knows when it has sunk" do
+      ship.size.times{ ship.hit }
+      expect(ship.status).to eq(:sunk)
+    end
+
+    it "gives a message when ship has sunk" do
+      ship.hit
+      expect(ship.hit).to eq("You have sunk my ship!")
     end
 end
