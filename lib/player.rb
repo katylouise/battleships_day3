@@ -35,7 +35,7 @@ class Player
   private
 
   def full?
-    ships.count >= 5
+    ships.count >= board.ship_capacity
   end
 
 end

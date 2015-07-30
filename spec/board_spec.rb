@@ -11,6 +11,10 @@ describe Board do
     expect(board.size).to eq(Board::DEFAULT_SIZE)
   end
 
+  it 'has a default capacity' do
+    expect(board.ship_capacity).to eq(Board::DEFAULT_CAPACITY)
+  end
+
   it 'converts coordinates' do
     expect(board.coordinate_converter('D10')).to eq([3, 9])
   end

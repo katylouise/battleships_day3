@@ -2,12 +2,14 @@ require_relative 'grid'
 
 class Board
   attr_accessor :grid
-  attr_reader :size
+  attr_reader :size, :ship_capacity
 
   DEFAULT_SIZE = 10
+  DEFAULT_CAPACITY = 5
 
-  def initialize size=DEFAULT_SIZE
+  def initialize size=DEFAULT_SIZE, ship_capacity=DEFAULT_CAPACITY
     @size = size
+    @ship_capacity = ship_capacity
     @grid = Grid.new @size
   end
 
@@ -48,8 +50,5 @@ class Board
     y = coordinate.to_i
     [alpha_table[x], (y - 1)]
   end
-
-  private
-
 
 end
