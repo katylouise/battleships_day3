@@ -15,24 +15,14 @@ describe Board do
       expect(subject).to respond_to(:place).with(2).argument
     end
 
-    it 'gives an error if attempts to place northerly ship on grid' do
+    it 'gives an error if attempts to place horizontal ship on grid' do
       allow(ship).to receive(:destroyer)
-      expect{subject.place(ship, 'A10')}.to raise_error "Your ship is off the grid"
+      expect{subject.place(ship, 'J1')}.to raise_error "Your ship is off the grid"
     end
 
-    it 'gives an error if attempts to place southerly ship on grid' do
+    it 'gives an error if attempts to place vertical ship on grid' do
       allow(ship).to receive(:destroyer)
-      expect{subject.place(ship, 'A1', :south)}.to raise_error "Your ship is off the grid"
-    end
-
-    it 'gives an error if attempts to place easterly ship on grid' do
-      allow(ship).to receive(:destroyer)
-      expect{subject.place(ship, 'A1', :east)}.to raise_error "Your ship is off the grid"
-    end
-
-    it 'gives an error if attempts to place northerly ship on grid' do
-      allow(ship).to receive(:destroyer)
-      expect{subject.place(ship, 'J10', :west)}.to raise_error "Your ship is off the grid"
+      expect{subject.place(ship, 'A10', :vertical)}.to raise_error "Your ship is off the grid"
     end
   end
 end
