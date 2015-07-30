@@ -2,13 +2,16 @@ require_relative 'grid'
 
 class Board
   attr_accessor :grid
+  attr_reader :size
 
-  def initialize
-    @grid = Grid.new
+  def initialize size
+    # options = defaults.merge(options)
+    @size = size
+    @grid = Grid.new @size
   end
 
   def display_grid
-    grid.matrix.map { |row| row.map { |el| el.content.symbol  } }
+    grid.matrix.map { |row| row.map { |cell| cell.display_symbol  } }
   end
 
   def check_coord (ship, number_coordinate, direction)
@@ -17,7 +20,7 @@ class Board
     grid_reference
   end
 
-  def place (ship, coordinate, direction=:horizontal)
+  def place (ship, coordinate, direction)
     number_coords = coordinate_converter(coordinate)
     grid_reference = check_coord(ship, number_coords, direction)
     add_ship_to_cells(ship, number_coords, grid_reference)
@@ -43,5 +46,11 @@ class Board
     x = coordinate.slice!(0).upcase
     y = coordinate.to_i
     [alpha_table[x], (y - 1)]
+  end
+
+  private
+
+  def defaults
+    {size: DEFAULT_SIZE }
   end
 end

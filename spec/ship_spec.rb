@@ -3,7 +3,7 @@ require 'ship'
 describe Ship do
     it 'contains ship symbol' do
       ship = Ship.destroyer
-      expect(ship.symbol).to eq(:s)
+      expect(ship.symbol).to eq('s')
     end
 
     it "is a destroyer size 2" do

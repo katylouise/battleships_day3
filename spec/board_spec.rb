@@ -2,17 +2,18 @@ require 'board'
 
 describe Board do
   let(:ship) { double(:ship, { size: 2 }) }
+  board = Board.new 10
   it "responds to display_grid" do
-    expect(subject).to respond_to(:display_grid)
+    expect(board).to respond_to(:display_grid)
   end
 
   it 'converts coordinates' do
-    expect(subject.coordinate_converter('D10')).to eq([3, 9])
+    expect(board.coordinate_converter('D10')).to eq([3, 9])
   end
 
   describe "#place" do
     it 'responds to place' do
-      expect(subject).to respond_to(:place).with(2).argument
+      expect(board).to respond_to(:place).with(3).argument
     end
   end
 
@@ -22,15 +23,15 @@ describe Board do
     end
 
     it 'gives an error if attempts to place horizontal ship on grid' do
-      expect{subject.place(ship, 'J1')}.to raise_error "Your ship is off the grid"
+      expect{board.place(ship, 'J1', :horizontal)}.to raise_error "Your ship is off the grid"
     end
 
     it 'gives an error if attempts to place vertical ship on grid' do
-      expect{subject.place(ship, 'A10', :vertical)}.to raise_error "Your ship is off the grid"
+      expect{board.place(ship, 'A10', :vertical)}.to raise_error "Your ship is off the grid"
     end
 
     it 'should return a grid reference for valid coordinates' do
-      expect(subject.check_coord(ship, [0, 0], :horizontal)).to eq(0)
+      expect(board.check_coord(ship, [0, 0], :horizontal)).to eq(0)
     end
   end
 end

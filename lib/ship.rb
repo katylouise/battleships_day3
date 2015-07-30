@@ -11,15 +11,14 @@ attr_reader :symbol, :size
 attr_accessor :hit_count
 
   def initialize(size)
-    @symbol = :s
+    @symbol = 's'
     @size = size
     @hit_count = 0
     @status = :afloat
   end
 
   def hit
-    @symbol = :x
-    hit_count += 1
+    @hit_count += 1
     sunk if hit_count == size
     "Hit!"
   end

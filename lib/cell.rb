@@ -2,12 +2,13 @@ require_relative 'water'
 
 class Cell
 
-  attr_accessor :content, :status
+  attr_accessor :content, :status, :display_symbol
 
   def initialize(options={})
     options = defaults.merge(options)
     @content = options[:content]
     @status = :not_hit
+    @display_symbol = content.symbol
   end
 
   def change_contents(ship)
@@ -17,6 +18,7 @@ class Cell
 
   def hit
     @status = :hit
+    @display_symbol = 'x'
     content.hit
   end
 

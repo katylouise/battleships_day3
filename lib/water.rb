@@ -3,7 +3,7 @@ class Water
   attr_reader :symbol
 
   def initialize
-    @symbol = :~
+    @symbol = '~'
   end
 
   def hit

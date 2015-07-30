@@ -5,10 +5,12 @@ require_relative 'board'
 class Player
   attr_accessor :board, :ships
 
-  def initialize(name)
-    @name = name
+  DEFAULT_BOARD_SIZE = 10
+
+  def initialize(board_size=DEFAULT_BOARD_SIZE)
+    # @name = name
     @points = 0
-    @board = Board.new
+    @board = Board.new board_size
     @ships = []
   end
 

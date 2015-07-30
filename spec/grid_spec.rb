@@ -2,27 +2,29 @@ require 'grid'
 
 describe Grid do
   let(:cell) { double(:cell) }
+  grid = Grid.new 10
+
   it 'responds to matrix_builder' do
-    expect(subject).to respond_to(:matrix_builder)
+    expect(grid).to respond_to(:matrix_builder)
   end
 
-  it 'should create a default size matrix' do
-    expect(subject.matrix.length).to eq(Grid::DEFAULT_SIZE)
+  it 'should create a matrix of the specified size' do
+    expect(grid.matrix.length).to eq(10)
   end
 
-  it 'the first row should be equal to the default size' do
-    expect(subject.matrix[0].length).to eq(Grid::DEFAULT_SIZE)
+  it 'the first row should be equal to the matrix size' do
+    expect(grid.matrix[0].length).to eq(10)
   end
 
   it 'should create a populated matrix' do
-    expect(subject.matrix[0]).not_to be_empty
+    expect(grid.matrix[0]).not_to be_empty
   end
 
   it 'should create different cells' do
-    expect(subject.matrix[0][0]).not_to eq(subject.matrix[0][1])
+    expect(grid.matrix[0][0]).not_to eq(grid.matrix[0][1])
   end
 
   it 'should find a cell given number coordinates' do
-    expect(subject.find_cell([0, 0])).to respond_to(:content)
+    expect(grid.find_cell([0, 0])).to respond_to(:content)
   end
 end

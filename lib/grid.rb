@@ -2,13 +2,10 @@ require_relative 'cell'
 
 class Grid
 
-DEFAULT_SIZE = 10
-
 attr_reader :matrix, :size
 
-  def initialize(options = {})
-    options = defaults.merge(options)
-    @size = options[:size]
+  def initialize(size)
+    @size = size
     matrix_builder
   end
 
@@ -21,9 +18,5 @@ attr_reader :matrix, :size
     @matrix[number_coords[1]][number_coords[0]]
   end
 
-private
 
-  def defaults
-    {size: DEFAULT_SIZE }
-  end
 end
