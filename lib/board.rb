@@ -46,9 +46,9 @@ class Board
 
   def coordinate_converter(coordinate)
     alpha_table = alphabet_hash
-    x = coordinate.slice!(0).upcase
-    y = coordinate.to_i
-    [alpha_table[x], (y - 1)]
+    x = coordinate[0].upcase
+    y = coordinate[1..-1]
+    [alpha_table[x], (y.to_i - 1)]
   end
 
 end

@@ -2,11 +2,12 @@ require_relative 'grid'
 require_relative 'board'
 
 class Player
-  attr_accessor :board, :ships
+  attr_accessor :board, :ships, :shots
 
   def initialize
     @points = 0
     @ships = []
+    @shots = {}
   end
 
   def add_board board
@@ -25,7 +26,7 @@ class Player
 
   def shoot(location)
     cell = board.grid.find_cell(board.coordinate_converter(location))
-    cell.hit
+    shots[location] = cell.hit
   end
 
   def display_grid
