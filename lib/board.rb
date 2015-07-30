@@ -29,10 +29,8 @@ class Board
       number_coordinate[grid_reference] += 1
     end
   end
-  # def get_number_coordinates(coordinate)
-  #   coordinate_converter(coordinate)
-  # end
 
+#Ask do we need to test place or add_ship_to_cells if we have tested their components?
 
   def alphabet_hash
     alpha_table = {}
