@@ -1,6 +1,7 @@
 require 'grid'
 
 describe Grid do
+  let(:cell) { double(:cell) }
   it 'responds to matrix_builder' do
     expect(subject).to respond_to(:matrix_builder)
   end
@@ -19,5 +20,9 @@ describe Grid do
 
   it 'should create different cells' do
     expect(subject.matrix[0][0]).not_to eq(subject.matrix[0][1])
+  end
+
+  it 'should find a cell given number coordinates' do
+    expect(subject.find_cell([0, 0])).to respond_to(:content)
   end
 end
