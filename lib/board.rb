@@ -17,10 +17,19 @@ class Board
 
   def display_grid
     rows = grid.matrix.map { |row| row.map { |cell| cell.display_symbol } }
+
     #rows.each_with_index.map { |row, i| row.unshift(i + 1) }
     table = Terminal::Table.new :rows => rows, :headings => ('A'..'J')
-    puts table
+    # print number_table
+    print table
   end
+
+  # def number_table
+  #   rows = []
+  #   (1..size).each { |n| rows << [n] }
+  #   rows.unshift([" "])
+  #   number_table = Terminal::Table.new :rows => rows
+  # end
 
   def check_coord (ship, number_coordinate, direction)
     direction == :horizontal ? grid_reference = 0 : grid_reference = 1
