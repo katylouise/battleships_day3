@@ -24,13 +24,21 @@ class Player
     board.place(ship, location, direction)
   end
 
-  def shoot(location)
+  def shoot(board, location)
     cell = board.grid.find_cell(board.coordinate_converter(location))
     shots[location] = cell.hit
   end
 
+  def game_status
+    "You have #{ships.count - number_ships_sunk} ships left to sink!"
+  end
+
   def display_grid
     board.display_grid
+  end
+
+  def number_ships_sunk
+    ships.select { |ship| ship.status == :sunk }.count
   end
 
   def lost?

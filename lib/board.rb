@@ -1,3 +1,4 @@
+require 'terminal-table'
 require_relative 'grid'
 
 class Board
@@ -7,14 +8,18 @@ class Board
   DEFAULT_SIZE = 10
   DEFAULT_CAPACITY = 5
 
-  def initialize size=DEFAULT_SIZE, ship_capacity=DEFAULT_CAPACITY
-    @size = size
-    @ship_capacity = ship_capacity
+  def initialize(options={})
+    options = defaults.merge(options)
+    @size = options[:size]
+    @ship_capacity = options[:ship_capacity]
     @grid = Grid.new @size
   end
 
   def display_grid
-    grid.matrix.map { |row| row.map { |cell| cell.display_symbol  } }
+    rows = grid.matrix.map { |row| row.map { |cell| cell.display_symbol } }
+    #rows.each_with_index.map { |row, i| row.unshift(i + 1) }
+    table = Terminal::Table.new :rows => rows, :headings => ('A'..'J')
+    puts table
   end
 
   def check_coord (ship, number_coordinate, direction)
@@ -51,4 +56,10 @@ class Board
     [alpha_table[x], (y.to_i - 1)]
   end
 
+  def defaults
+    {
+      size: DEFAULT_SIZE,
+      ship_capacity: DEFAULT_CAPACITY
+    }
+  end
 end

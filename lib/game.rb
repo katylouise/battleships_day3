@@ -11,8 +11,8 @@ class Game
     @board = board
   end
 
-  def start(player, board)
-    players << player
+  def start(player, board)  #Need to test this method
+    add_player(player)
     player.add_board(board)
   end
 
